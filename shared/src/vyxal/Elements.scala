@@ -4049,6 +4049,17 @@ object Elements:
       false,
       "a: lst => indices of truthy elements of a",
     ) { a => ListHelpers.truthyIndices(ListHelpers.makeIterable(a)) },
+    addPart(
+      Dyad,
+      "∆B",
+      "Random number between a and b",
+      List("rand-between", "random-number-between"),
+      true,
+      "a: int, b: int -> random number between a and b inclusive",
+    ) {(a: VNum, b: VNum) => val random = new scala.util.Random
+        random.between(a.toInt, b.toInt)
+      }
+    )
   )
 
   private def execHelper(value: VAny)(using ctx: Context): VAny =
